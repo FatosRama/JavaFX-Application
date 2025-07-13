@@ -1,6 +1,8 @@
 package LoginWindow;
 
 import javafx.application.Application;
+import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Scene;
@@ -15,6 +17,8 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.text.Font;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 
@@ -28,7 +32,8 @@ public class MainLogInWindow extends Application{
         stage.initStyle(StageStyle.UNDECORATED);
         root.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #1a1a1a, #2a2a2a);");
 
-
+        //Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/Play-Regular.ttf"), 14);
+        //System.out.println("Font loaded: " + font);
 
 
 
@@ -58,11 +63,13 @@ public class MainLogInWindow extends Application{
         titleApplication.setLayoutX(320);
 
         titleApplication.setStyle("-fx-font-size:30px;"+"-fx-text-fill: #39ff14;");
+        //titleApplication.setFont(font);
 
 //-----------------------------LOG IN PANEL -----------------------------------
-        Label PanelTitle = new Label("LOG IN");
-        PanelTitle.setStyle("-fx-text-fill: white; -fx-font-family: Arial Black; -fx-font-size:20px; -fx-font-weight:bold;");
-        PanelTitle.setLayoutX(410);
+        Label PanelTitle = new Label("Log in");
+        PanelTitle.setStyle("-fx-text-fill: white; -fx-font-size:20px; -fx-font-weight:bold;");
+      //  PanelTitle.setFont(Font.font("Play",14));
+        PanelTitle.setLayoutX(420);
         PanelTitle.setLayoutY(90);
 
 
@@ -85,6 +92,164 @@ public class MainLogInWindow extends Application{
         logInPanel.setEffect(logInPanelShadow);
         logInPanel.setLayoutX(300);
         logInPanel.setLayoutY(70);
+
+
+        Image openedEyeImage = new Image("file:C:\\Users\\Gaming\\IdeaProjects\\JavaFX Application\\src\\images\\open.png");
+        Image closedEyeImage = new Image("file:C:\\Users\\Gaming\\IdeaProjects\\JavaFX Application\\src\\images\\close.png");
+        Image mainAppLogo = new Image("file:C:\\Users\\Gaming\\IdeaProjects\\JavaFX Application\\src\\images\\XPulse_Launcher.png");
+
+        DropShadow appLogoShadow = new DropShadow();
+        appLogoShadow.setColor(Color.GRAY);
+        appLogoShadow.setRadius(10);
+        appLogoShadow.setOffsetX(0);
+        appLogoShadow.setOffsetY(0);
+
+        ImageView mainAppLogoView = new ImageView(mainAppLogo);
+        mainAppLogoView.setFitWidth(160);
+        mainAppLogoView.setFitHeight(160);
+        mainAppLogoView.setLayoutX(370);
+        mainAppLogoView.setLayoutY(120);
+        mainAppLogoView.setEffect(appLogoShadow);
+        mainAppLogoView.setOnMouseEntered(e->{
+            appLogoShadow.setColor(Color.web("#39ff14"));
+        });
+        mainAppLogoView.setOnMouseExited(e->{
+            appLogoShadow.setColor(Color.GRAY);
+        });
+
+
+
+        DropShadow textFieldShadow = new DropShadow();
+        textFieldShadow.setColor(Color.WHITE);
+        textFieldShadow.setSpread(0.5);
+        textFieldShadow.setRadius(4);
+        textFieldShadow.setOffsetX(0);
+        textFieldShadow.setOffsetY(0);
+
+        Label userNameLabel = new Label("Username: ");
+        userNameLabel.setLayoutX(320);
+        userNameLabel.setLayoutY(270);
+        userNameLabel.setStyle("-fx-font-size: 15px; -fx-text-fill:#6f6f6f;");
+
+        Label passwordLabel = new Label("Password: ");
+        passwordLabel.setLayoutX(320);
+        passwordLabel.setLayoutY(350);
+        passwordLabel.setStyle("-fx-font-size: 15px; -fx-text-fill:#6f6f6f;");
+
+
+        TextField userNameTextField = new TextField();
+        userNameTextField.setLayoutX(320);
+        userNameTextField.setLayoutY(300);
+        userNameTextField.setPrefWidth(240);
+        userNameTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: gray ; -fx-border-width: 1; -fx-border-radius: 2;");
+        userNameTextField.setOnMouseEntered(e->{
+            userNameTextField.setEffect(textFieldShadow);
+                }
+                );
+        userNameTextField.setOnMouseExited(e->{
+            userNameTextField.setEffect(null);
+        });
+
+
+
+
+
+
+
+
+        PasswordField passwordTextField = new PasswordField();
+        passwordTextField.setLayoutX(320);
+        passwordTextField.setLayoutY(380);
+        passwordTextField.setPrefWidth(240);
+        passwordTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: gray ; -fx-border-width: 1; -fx-border-radius: 2;");
+        passwordTextField.setOnMouseEntered(e->{
+                    passwordTextField.setEffect(textFieldShadow);
+                }
+        );
+        passwordTextField.setOnMouseExited(e->{
+           passwordTextField.setEffect(null);
+        });
+
+        TextField showPasswordTextField = new TextField();
+        showPasswordTextField.setLayoutX(320);
+        showPasswordTextField.setLayoutY(380);
+        showPasswordTextField.setPrefWidth(240);
+        showPasswordTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: gray ; -fx-border-width: 1; -fx-border-radius: 2;");
+        showPasswordTextField.setOnMouseEntered(e->{
+                    showPasswordTextField.setEffect(textFieldShadow);
+                }
+        );
+        showPasswordTextField.setOnMouseExited(e->{
+            showPasswordTextField.setEffect(null);
+        });
+
+        showPasswordTextField.textProperty().bindBidirectional(passwordTextField.textProperty());
+
+        DropShadow eyeShadow = new DropShadow();
+        eyeShadow.setColor(Color.CYAN);
+        eyeShadow.setRadius(1.8);
+        eyeShadow.setOffsetX(0);
+        eyeShadow.setOffsetY(0);
+
+        ImageView closedEyeView = new ImageView(closedEyeImage);
+        closedEyeView.setFitWidth(40);
+        closedEyeView.setPreserveRatio(true);
+        closedEyeView.setLayoutX(560);
+        closedEyeView.setLayoutY(386.5);
+
+
+        ImageView openedEyeView = new ImageView(openedEyeImage);
+        openedEyeView.setFitWidth(40);
+        openedEyeView.setPreserveRatio(true);
+        openedEyeView.setLayoutY(387);
+        openedEyeView.setLayoutX(560);
+        openedEyeView.setOnMouseEntered(e->{
+            openedEyeView.setEffect(eyeShadow);
+        });
+        openedEyeView.setOnMouseExited(e->{
+            openedEyeView.setEffect(null);
+        });
+        openedEyeView.setOnMousePressed(e->{
+
+            root.getChildren().removeAll(passwordTextField,openedEyeView);
+            root.getChildren().addAll(showPasswordTextField,closedEyeView);
+        });
+        closedEyeView.setOnMouseEntered(e->{
+            closedEyeView.setEffect(eyeShadow);
+        });
+        closedEyeView.setOnMouseExited(e->{
+            closedEyeView.setEffect(null);
+        });
+        closedEyeView.setOnMousePressed(e->{
+
+            root.getChildren().removeAll(showPasswordTextField,closedEyeView);
+            root.getChildren().addAll(passwordTextField,openedEyeView);
+        });
+
+
+        Button logInButton = new Button("LOG IN");
+        logInButton.setPrefWidth(100);
+        logInButton.setPrefHeight(40);
+        logInButton.setLayoutX(400);
+        logInButton.setLayoutY(440);
+        logInButton.setStyle("-fx-background-color:linear-gradient(from 0% 0% to 100% 0%, #252525,#1f1f1f); -fx-text-fill:#39ff14;-fx-font-size:18px;-fx-font-weight:bold;");
+        logInButton.setOnMouseEntered(e->{
+            logInButton.setStyle("-fx-background-color:#39ff14; -fx-text-fill:linear-gradient(from 0% 0% to 100% 0%, #252525,#1f1f1f);-fx-font-size:18px;-fx-font-weight:bold;");
+
+        });
+        logInButton.setOnMouseExited(e->{
+            logInButton.setStyle("-fx-background-color:linear-gradient(from 0% 0% to 100% 0%, #252525,#1f1f1f); -fx-text-fill:#39ff14;-fx-font-size:18px;-fx-font-weight:bold;");
+
+        });
+
+
+
+
+
+
+
+
+
 //-------------------------------------------------------------------------
 
 
@@ -158,7 +323,7 @@ public class MainLogInWindow extends Application{
 
 
 
-        root.getChildren().addAll(draggableRectangle,logInPanel,PanelTitle,titleApplication,dLine1,dLine2,dLine3,right,bottom,left,top,minimizeButton,exitButton);
+        root.getChildren().addAll(draggableRectangle,logInPanel,logInButton,mainAppLogoView,openedEyeView,PanelTitle,passwordLabel,userNameLabel,passwordTextField,userNameTextField,titleApplication,dLine1,dLine2,dLine3,right,bottom,left,top,minimizeButton,exitButton);
         Scene scene = new Scene(root, 900, 600,Color.BLACK);
         draggableRectangle.setOnMousePressed(e -> {
             XOffset = e.getScreenX() - stage.getX();
@@ -175,6 +340,8 @@ public class MainLogInWindow extends Application{
 
     }
     public static void main(String[] args){
+        //System.out.println(javafx.scene.text.Font.getFamilies());
+
         launch();
     }
 
