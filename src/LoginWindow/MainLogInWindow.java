@@ -242,13 +242,21 @@ public class MainLogInWindow extends Application{
 
         });
         logInButton.setOnMousePressed(e->{
-            userNameLabel.setText("Username or Password is incorrect!");
-            userNameLabel.setStyle("-fx-font-size: 15px; -fx-text-fill:red;");
-            passwordLabel.setText("Password is incorrect!");
-            passwordLabel.setStyle("-fx-font-size: 15px; -fx-text-fill:red;");
-            userNameTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: red ; -fx-border-width: 1; -fx-border-radius: 2;");
-            passwordTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: red ; -fx-border-width: 1; -fx-border-radius: 2;");
-            showPasswordTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: red ; -fx-border-width: 1; -fx-border-radius: 2;");
+            String getUser = userNameTextField.getText();
+            String getPassword = passwordTextField.getText();
+            String getShownPassword = showPasswordTextField.getText();
+            if(getUser.equals("admin123")&&getPassword.equals("admin1234")||getShownPassword.equals("admin1234")){
+
+            }else{
+                userNameLabel.setText("Username or Password is incorrect!");
+                userNameLabel.setStyle("-fx-font-size: 15px; -fx-text-fill:red;");
+                passwordLabel.setText("Password is incorrect!");
+                passwordLabel.setStyle("-fx-font-size: 15px; -fx-text-fill:red;");
+                userNameTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: red ; -fx-border-width: 1; -fx-border-radius: 2;");
+                passwordTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: red ; -fx-border-width: 1; -fx-border-radius: 2;");
+                showPasswordTextField.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #2a2a2a,#1a1a1a);-fx-font-size: 14px; -fx-text-fill:white; -fx-border-color: red ; -fx-border-width: 1; -fx-border-radius: 2;");
+
+            }
 
 
 
