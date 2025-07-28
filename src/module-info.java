@@ -3,4 +3,5 @@ module LoginWindow {
     requires javafx.fxml;
 
     exports LoginWindow;
+    exports LauncherWindow;
 }
